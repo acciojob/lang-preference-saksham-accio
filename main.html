@@ -1,16 +1,70 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
-	<link rel="stylesheet" href="styles.css">
+	<title>Language Preference Example</title>
+	<style>
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		li {
+			display: inline-block;
+			margin-right: 10px;
+		}
+
+		a {
+			text-decoration: none;
+			color: #333;
+		}
+	</style>
 </head>
 
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+	<h1 id="heading">Language Preference Example</h1>
+	<p id="message">Select your preferred language:</p>
+	<ul>
+		<li><a href="#" onclick="setLanguagePreference('en')">English</a></li>
+		<li><a href="#" onclick="setLanguagePreference('es')">Español</a></li>
+		<li><a href="#" onclick="setLanguagePreference('fr')">Français</a></li>
+	</ul>
+	<script>
+		// Set language preference
+		function setLanguagePreference(language) {
+			sessionStorage.setItem("language", language);
+			// Redirect to home page
+			window.location.href = "./index.html";
+		}
 
+		// Get language preference
+		function getLanguagePreference() {
+			return sessionStorage.getItem("language");
+		}
+
+		// Set language preference for the page
+		function setLanguagePreferenceForPage() {
+			let language = getLanguagePreference();
+			if (language === "es") {
+				document.title = "Preferencia de Idioma Ejemplo";
+				document.getElementById("heading").innerHTML = "Preferencia de Idioma Ejemplo";
+				document.getElementById("message").innerHTML = "Este es un ejemplo de preferencia de idioma.";
+			} else if (language === "fr") {
+				document.title = "Exemple de Préférence de Langue";
+				document.getElementById("heading").innerHTML = "Exemple de Préférence de Langue";
+				document.getElementById("message").innerHTML = "Ceci est un exemple de préférence de langue.";
+			} else {
+				document.title = "Language Preference Example";
+				document.getElementById("heading").innerHTML = "Language Preference Example";
+				document.getElementById("message").innerHTML = "This is an example of language preference.";
+			}
+		}
+
+		// On load
+		setLanguagePreferenceForPage();
+
+	</script>
 </body>
 
 </html>
